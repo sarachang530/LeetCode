@@ -74,4 +74,54 @@ const permPalin = (string) => {
 */
 
 
+​const permPalinAdvanced = str => {
+/**
+ * toggles specific bit at index on the bitVector
+ * 
+ * @param {BigInt} bitVector 
+ * @param {Integer} index 
+ * 
+ * toggle(0b1000, 3) => bitVector = 0
+ * toggle(0, 3) => bitVector = 0b1000
+ */
+const toggle = (bitVector, index) => {
+  // index out of bounds
+  if (index < 0) return bitVector;
 ​
+  // mask used for comparison against bitVector, detecting whether specific bit is 1 or not
+  // index = 3, mask = 0b1000
+  const mask = BigInt(1 << index);
+​
+  // if ANDing bitVector and mask results in 0, the specific bit at index will be set to 1
+  // 0b1000 & 0b100 = 0 => bitVector = 0b1000 | 0b100 = 0b1100
+  if ((bitVector & mask) === 0n) {
+    bitVector = bitVector | mask
+  }
+  // else the specific bit on bitVector has a value of 1,
+  // the bitVector is ANDed with the inverse of mask
+  // if 0b10 & 0b10 = 0b10 then bitVector = 0b10 & 0b01 = 0
+  else {
+    bitVector = bitVector & ~mask
+  }
+​
+  return bitVector;
+}
+​
+// BigInt to handle bit indexes over 53
+let bitVector = 0n;
+​
+const isStrLengthEven = str.length % 2 === 0;
+​
+// toggle on/off each character of the string using character codes
+for (let i = 0; i < str.length; i++) {
+  bitVector = toggle(bitVector, str[i].charCodeAt());
+}
+​
+if (isStrLengthEven && bitVector === 0n) return true
+// if bitVector = 0b1000 and bitVector - 1 = 0b111, ANDing them gives the result 0,
+// indicating only one bit on the integer had a value of 1
+// conversely, if bitVector = 0b1100 and bitVector - 1 = 0b1011, ANDing gives the result 0b1000,
+// indicating more than one specific bit on bitVector had a value of 1
+else if (!isStrLengthEven && ((bitVector & (bitVector - 1n)) === 0n)) return true
+else return false
+}
