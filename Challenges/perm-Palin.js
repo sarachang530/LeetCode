@@ -46,4 +46,32 @@ const permPalin = (string) => {
   // if string length is even, impossible to have just 1 oddCharCount
   return oddCharCounts <= 1;
 };
+
+
+/* 
+ * Extension: Solve in constant space complexity.
+ */
+/**
+* 3. Storing frequency of characters in an integer (BigInt)
+* 
+* => Very similar implementation to permPalin, but achieves constant space
+*    by using an integer to memoize the character frequencies.
+* 
+* - If string length is even, the bitVector should be 0.
+* - If string length is odd, the bitVector should contain one bit of value 1
+* 
+* Time Complexity: O(n)
+* Space Complexity: O(1)
+* 
+* Note: Use of BigInt included because JavaScript natively uses 53-bit integers,
+* but to store frequencies of character codes 0-9, a-z, and A-Z, 
+* we need to have at least 128 indices to work with => 'z'.charCodeAt() = 122
+* BigInt's implementation allows for this headroom, but all operations and comparisons
+* must be made by the same type, which is why numbers like 0n, 1n, and BigInt(x) are used.
+*
+* Further reading on bitwise operators: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators
+* Further reading on BigInt: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+*/
+
+
 ​
