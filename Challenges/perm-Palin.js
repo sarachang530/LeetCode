@@ -12,3 +12,38 @@
  * 	- permPalin('a') => true
  *
  * Hint: Think about the length of the string and how that relates to the frequencies of the characters
+*/
+
+const permPalin = (string) => {
+  if (!string) return true;
+  if (typeof string !== 'string') return false;
+​
+  // solution is case-insensitive
+  const lowerStr = string.toLowerCase();
+​
+  const charCounts = {};
+  let oddCharCounts = 0;
+​
+  for (let i = 0; i < lowerStr.length; i++) {
+    // count frequency of each character
+    charCounts[lowerStr[i]] = charCounts[lowerStr[i]] + 1 || 1;
+​
+    // if char's frequency is odd, increment oddCharCounts
+    if (charCounts[lowerStr[i]] % 2 !== 0) oddCharCounts += 1;
+    else {
+      // if char's frequency is even, decrement oddCharCounts
+      // (frequencies must be odd before they can be even)
+      oddCharCounts -= 1;
+​
+      // delete k-v pair for char -- we only care about odd counts
+      // this mitigates space complexity, although worst-case remains linear
+      // (could argue constant because there is a fixed number of characters in a given char set)
+      delete charCounts[lowerStr[i]];
+    }
+  }
+​
+  // odd length strings can have 1 oddCharCount, even can have 0
+  // if string length is even, impossible to have just 1 oddCharCount
+  return oddCharCounts <= 1;
+};
+​
