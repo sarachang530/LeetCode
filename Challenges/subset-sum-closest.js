@@ -17,3 +17,20 @@ subsetSumClosest([], 6) -> 6
 An empty array "sums" to 0, which has an absolute difference from the target 6
 of 6.
 */
+
+const subsetSumClosest = (nums, target) => {
+  let minDifference = Infinity;
+  const process = (updatedTarget, index) => {
+    if (index === nums.length) {
+      minDifference = Math.min(minDifference, Math.abs(updatedTarget));
+      return;
+    }
+    process(updatedTarget - nums[index], index + 1);
+    process(updatedTarget, index + 1);
+  };
+  process(target, 0);
+  return minDifference;
+};
+console.log(subsetSumClosest([3, 7, 8, 2], 6));
+console.log(subsetSumClosest([1, -3, 2], 5));
+console.log(subsetSumClosest([], 6));
