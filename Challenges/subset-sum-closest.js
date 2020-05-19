@@ -74,3 +74,22 @@ A solution set is:
 ]
 because there are no solutions possible
 */
+
+const generateCombinations = (nums, target) => {
+  const subsets = [];
+  const curr = [];
+  const processSubset = (updatedTarget, index) => {
+    if (updatedTarget === 0) {
+      subsets.push(curr.slice());
+      return;
+    }
+    if (nums[index] > updatedTarget || index === nums.length) return;
+    curr.push(nums[index]);
+    processSubset(updatedTarget - nums[index], index);
+    curr.pop();
+    processSubset(updatedTarget, index + 1);
+  };
+  processSubset(target, 0);
+  return subsets;
+};
+console.log(generateCombinations([2, 3, 5], 8));
