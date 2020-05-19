@@ -34,3 +34,43 @@ const subsetSumClosest = (nums, target) => {
 console.log(subsetSumClosest([3, 7, 8, 2], 6));
 console.log(subsetSumClosest([1, -3, 2], 5));
 console.log(subsetSumClosest([], 6));
+
+/*
+Extension:
+Given a set of candidate numbers (nums) (without duplicates) and a target
+number (target), find all unique combinations in candidates where the candidate
+numbers exactly sum to target.
+The candidate numbers will always be presented in ascending order.
+The same repeated number may be chosen from candidates unlimited number of times.
+Note:
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+The solution set combinations may be returned in any order. However, each
+individual combination must be presented in ascending order.
+Input: nums = [2,3,6,7], target = 7,
+A solution set is:
+[
+  [7],
+  [2,2,3]
+]
+also returning
+[
+  [2,2,3],
+  [7]
+]
+would be valid too.
+Input: nums = [2,3,5], target = 8,
+A solution set is:
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]
+(rearrangements of the arrays are valid too, as long as each array has the
+numbers in ascending order)
+Input: nums = [3,4,7,8,11], target = 5,
+A solution set is:
+[
+]
+because there are no solutions possible
+*/
