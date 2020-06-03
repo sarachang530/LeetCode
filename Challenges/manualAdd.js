@@ -66,3 +66,26 @@ function manualAdd(firstNumber, secondNumber) {
   }
   return sum.join('')
 }
+
+
+
+ /////////////////////////////////////////////////
+
+ const manualAdd = (str1, str2, sum = [], remainder = 0) => {
+  let num1 = str1 / 10;
+  let num2 = str2 / 10;
+
+  while (num1 || num2) {
+    const numSum = Math.round(remainder + (num1 % 1 + num2 % 1) * 10);
+    numSum < 10 ? sum.push(numSum)
+      : sum.push(numSum % 10) && (remainder = Math.floor(numSum / 10));
+    num1 = Math.floor(num1) / 10;
+    num2 = Math.floor(num2) / 10;
+  }
+
+  return sum.reverse().join('')
+}
+
+console.log(manualAdd('253', '29')); // => 282
+console.log(manualAdd('253', '48')); // => 301
+console.log(manualAdd('12000', '1')); // => 12001
