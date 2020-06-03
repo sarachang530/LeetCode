@@ -39,3 +39,30 @@ function manualAdd(firstNumber, secondNumber) {
   }
    return parseInt(sum, 10);
  }
+
+
+ /////////////////////////////////////////////////
+
+ const manualSum = (str1, str2) => {
+  let sum = []
+  let n1, n2
+  let curr = carry = 0
+
+  str1.length > str2.length 
+  ? [n1, n2] = [str1.split(''), str2.split('')]
+  : [n1, n2] = [str2.split(''), str1.split('')]
+  
+  while(n1.length !== n2.length)
+   n2.unshift(0)
+  
+  while (n1.length > 0) {
+      curr = +n1.pop() + +n2.pop() + carry
+      carry = 0
+      if (curr > 9) {
+          curr += ''
+          sum.unshift(curr.slice(-1))
+          carry = +curr.slice(0, -1)
+      } else sum.unshift(curr)
+  }
+  return sum.join('')
+}
