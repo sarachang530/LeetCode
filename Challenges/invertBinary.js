@@ -34,12 +34,19 @@ Output:
  */
 var invertTree = function(root) {
   if(root === null) return root;
-  treeNodeR = invertTree(root.right);
-  treeNodeL = invertTree(root.left);
+  // treeNodeL = invertTree(root.left);
+  // treeNodeR = invertTree(root.right);
 
-  let temp = root.right
-  root.right = treeNodeL;
-  root.left = temp;
+  // let temp = root.left
+  // root.left = treeNodeR;
+  // root.right = temp;
+
+  let temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+
+  invertTree(root.left);
+  invertTree(root.right)
   return root;
 };
 
