@@ -38,9 +38,9 @@ Because the 4th row is incomplete, we return 3.
 
 var arrangeCoins = function(n) {
   let rows = 0;
-  while(n > rows+1){
-    console.log(rows)
-    n-=rows
+  if(n === 1) return n;
+  while(n >= rows+1){
+    n-=rows+1
     rows++
   }
   return rows
