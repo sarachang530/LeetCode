@@ -35,6 +35,15 @@ Because the 4th row is incomplete, we return 3.
  * @param {number} n
  * @return {number}
  */
+
 var arrangeCoins = function(n) {
-    
+  let rows = 0;
+  while(n > rows+1){
+    console.log(rows)
+    n-=rows
+    rows++
+  }
+  return rows
 };
+
+console.log(arrangeCoins(8))
