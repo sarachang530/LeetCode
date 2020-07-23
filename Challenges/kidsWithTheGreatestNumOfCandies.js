@@ -37,3 +37,23 @@ Constraints:
 1 <= extraCandies <= 50
 
 */
+
+
+/**
+ * @param {number[]} candies
+ * @param {number} extraCandies
+ * @return {boolean[]}
+ */
+var kidsWithCandies = function(candies, extraCandies) {
+  // find max in array
+  const max = Math.max(...candies)
+  let result = [];
+  for(let i in candies){
+    if(candies[i] + extraCandies >= max){
+      result.push(true);
+    } else {
+    result.push(false)
+  }
+}
+  return result
+};
