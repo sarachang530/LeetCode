@@ -1,13 +1,7 @@
 /* 1528. Shuffle String
-Easy
+https://leetcode.com/problems/shuffle-string/
 
-76
 
-3
-
-Add to List
-
-Share
 Given a string s and an integer array indices of the same length.
 
 The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
