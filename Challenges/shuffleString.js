@@ -56,6 +56,7 @@ All values of indices are unique (i.e. indices is a permutation of the integers 
  * @param {number[]} indices
  * @return {string}
  */
-var restoreString = function(s, indices) {
-    
+const restoreString = (s, indices, str = []) => {
+  for (let i in s) str[indices[i]] = s[i];
+  return str.join('');
 };
