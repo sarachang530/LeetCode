@@ -50,3 +50,12 @@ s contains only lower-case English letters.
 All values of indices are unique (i.e. indices is a permutation of the integers from 0 to n - 1).
 
 */
+
+/**
+ * @param {string} s
+ * @param {number[]} indices
+ * @return {string}
+ */
+var restoreString = function(s, indices) {
+    
+};
